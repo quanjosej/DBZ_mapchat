@@ -10,8 +10,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     private var connectedUsers: [User] = []
     
     var senderDisplayName: String?
-//    private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
-//    private var channelRefHandle: DatabaseHandle?
+    private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
+    private var channelRefHandle: DatabaseHandle?
 
     
     @IBOutlet weak var mapView: MKMapView!
@@ -42,12 +42,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             //Set curr user connection statues
             DBZUsersRef.child("connected_status").onDisconnectSetValue(false)
             DBZUsersRef.child("connected_status").setValue(true)
-            
 
-
-//            DBZUsersRef.child("name").setValue("testUser2")
-//            DBZUsersRef.child("latitude").setValue(43.694325)
-//            DBZUsersRef.child("longitude").setValue(-79.3967)
+            DBZUsersRef.child("name").setValue(senderDisplayName)
             
             loadOnlineDbzUsers()
             observeDbzUsers()
@@ -156,6 +152,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             print("--==-=-=-=-==")
             print(location.userId)
             print((Auth.auth().currentUser?.uid)!)
+            
+            
+            
             self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id:"ffhg", name:"jjjk"))
         }
     }
@@ -167,9 +166,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if let channel = sender as? Channel {
             let chatVc = segue.destination as! ChatViewController
             
-            chatVc.senderDisplayName = "fhgfghfx"
+            chatVc.senderDisplayName = senderDisplayName
             chatVc.channel = channel
-            chatVc.channelRef = DBZUsersRef
+            chatVc.channelRef = channelRef
         }
     }
     
