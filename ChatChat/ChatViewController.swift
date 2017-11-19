@@ -81,7 +81,7 @@ final class ChatViewController: JSQMessagesViewController {
     collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
     collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
     
-    observeMessages()
+//    observeMessages()
 
   }
     

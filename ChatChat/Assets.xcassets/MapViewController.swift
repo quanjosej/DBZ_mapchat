@@ -142,8 +142,35 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         if (control as? UIButton)?.buttonType == UIButtonType.detailDisclosure {
             mapView.deselectAnnotation(view.annotation, animated: false)
-            print("---=-=-=23452=3-5=-=-=-=-=53311///")
+            self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id:"ffhg", name:"jjjk"))
         }
+    }
+    
+    // MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if let channel = sender as? Channel {
+            let chatVc = segue.destination as! ChatViewController
+            
+            chatVc.senderDisplayName = "fhgfghfx"
+            chatVc.channel = channel
+            chatVc.channelRef = DBZUsersRef
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
 }

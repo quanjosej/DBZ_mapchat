@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k1L-YN-3rW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -89,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-343" y="388"/>
+            <point key="canvasLocation" x="-1302" y="100"/>
         </scene>
         <!--Channel List View Controller-->
         <scene sceneID="bg1-OT-nd2">
@@ -169,7 +169,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FHe-Sh-dDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1823" y="389"/>
+            <point key="canvasLocation" x="1730" y="63"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="fNE-JP-QV9">
@@ -185,36 +185,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTP-1r-Xjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2640" y="389"/>
+            <point key="canvasLocation" x="1770" y="870"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="bSs-3n-jeA">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0VN-ts-33b" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="kBB-em-wPM" customClass="MapViewController" customModule="ChatChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7xS-Wp-67H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PoP-0y-Cic">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PoP-0y-Cic" firstAttribute="leading" secondItem="XAq-Yp-uUR" secondAttribute="leading" id="GFT-BH-yA0"/>
                             <constraint firstItem="XAq-Yp-uUR" firstAttribute="trailing" secondItem="PoP-0y-Cic" secondAttribute="trailing" id="TNU-J3-XKz"/>
+                            <constraint firstItem="XAq-Yp-uUR" firstAttribute="bottom" secondItem="PoP-0y-Cic" secondAttribute="bottom" id="e7J-L9-R4m"/>
                             <constraint firstItem="XAq-Yp-uUR" firstAttribute="bottom" secondItem="PoP-0y-Cic" secondAttribute="bottom" id="lfM-xe-KZ1"/>
                             <constraint firstItem="PoP-0y-Cic" firstAttribute="top" secondItem="XAq-Yp-uUR" secondAttribute="top" id="q2W-Fx-Gqw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XAq-Yp-uUR"/>
                     </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="7LV-kS-M4i"/>
                     <connections>
                         <outlet property="mapView" destination="PoP-0y-Cic" id="Kps-uA-p8k"/>
+                        <segue destination="IHh-zK-Dgq" kind="show" identifier="ShowChannelChat" id="x2V-VP-Dle"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0VN-ts-33b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="393" y="871"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="K0t-nV-NJV">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jqi-O7-Top" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="k1L-YN-3rW" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="kls-kH-g8f">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kBB-em-wPM" kind="relationship" relationship="rootViewController" id="FcL-eC-bph"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-380" y="870"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="emB-h0-MiE">
@@ -237,7 +258,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XIN-tW-H0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1087" y="388"/>
+            <point key="canvasLocation" x="913" y="63"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="x2V-VP-Dle"/>
+    </inferredMetricsTieBreakers>
 </document>
