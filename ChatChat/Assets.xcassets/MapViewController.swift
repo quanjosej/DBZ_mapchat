@@ -143,19 +143,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
-        let location = view.annotation as! User
+        let curr_user = view.annotation as! User
         let launchOptions = [MKLaunchOptionsDirectionsModeKey:
             MKLaunchOptionsDirectionsModeDriving]
         
         if (control as? UIButton)?.buttonType == UIButtonType.detailDisclosure {
             mapView.deselectAnnotation(view.annotation, animated: true)
-            print("--==-=-=-=-==")
-            print(location.userId)
-            print((Auth.auth().currentUser?.uid)!)
+            
+            channelRef.observeSingleEvent(of: .value, with: {(snapshot) in
+                let enumerator = snapshot.children
+                while let rest = enumerator.nextObject() as? DataSnapshot {
+                    let channelData = rest.value as! Dictionary<String, AnyObject>
+                    
+                    //Check for existing chat channel between the users
+                    for channel_user in channelData["users"] as! Array<String> {
+                        if(channel_user == (Auth.auth().currentUser?.uid)!) || (channel_user == curr_user.userId ){
+                            self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id: rest.key, name:channelData["name"] as! String))
+                        }
+                    }
+                }
+                
+            })
             
             
             
-            self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id:"ffhg", name:"jjjk"))
+//            self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id:"ffhg", name:"jjjk"))
         }
     }
     
@@ -168,7 +180,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             chatVc.senderDisplayName = senderDisplayName
             chatVc.channel = channel
-            chatVc.channelRef = channelRef
+            chatVc.channelRef = channelRef.child(channel.id)
         }
     }
     
