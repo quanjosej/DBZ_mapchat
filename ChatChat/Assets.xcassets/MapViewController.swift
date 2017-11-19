@@ -14,7 +14,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     private lazy var DBZUsersRef: DatabaseReference = Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!)
     private var dbzUsersRefHandle: DatabaseHandle?
-    private var connectedUsers: [Users] = []
+    private var connectedUsers: [User] = []
+
     
     @IBOutlet weak var mapView: MKMapView!
     let regionRadius: CLLocationDistance = 1000
@@ -40,6 +41,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             DBZUsersRef.child("connected_status").setValue(true)
             
             loadOnlineDbzUsers()
+            displayUsersOnMap()
             observeDbzUsers()
             
         }
@@ -49,8 +51,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     private func loadOnlineDbzUsers() {
         
         DBZUsersRef.queryEqual(toValue: "true", childKey: "connected_status").observeSingleEvent(of: .value, with: {(snap) in
-            self.connectedUsers.append(Users(userId: snap.key , chatChannelId: "sss" ))
+            self.connectedUsers.append(User(userId: snap.key , chatChannelId: "sss", latitude: 43.654335, longitude: -79.3957 ))
         })
+        
+    }
+    
+    private func displayUsersOnMap() {
+        //Clear old annotations
+        let allAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
+        
+        self.mapView.addAnnotations(connectedUsers)
         
     }
     
@@ -63,9 +74,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             }
             
             if (dbzUserData["connected_status"] as! Bool) {
-                self.connectedUsers.append(Users(userId: snapshot.key , chatChannelId: "sss" ))
+                self.connectedUsers.append(User(userId: snapshot.key , chatChannelId: "sss", latitude: Double(dbzUserData["latitude"] as! String)!, longitude: Double(dbzUserData["longitude"] as! String)! ))
             }
             
+            self.displayUsersOnMap()
             
         })
         
