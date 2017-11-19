@@ -11,23 +11,21 @@ import Foundation
 
 internal class User: NSObject, MKAnnotation {
     let userId: String
-    let chatChannelId: String
     let coordinate: CLLocationCoordinate2D
     let title: String?
     let locationName : String?
 
     
-    init(userId: String, chatChannelId: String, latitude: Double, longitude: Double) {
+    init(userId: String, name: String, latitude: Double, longitude: Double) {
         self.userId = userId
-        self.chatChannelId = chatChannelId
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        self.title = "aloha"
-        self.locationName = "ssss"
+        self.title = name
+        self.locationName = userId
         
         super.init()
     }
     
     var subtitle: String? {
-        return userId
+        return String(coordinate.latitude) + ", " + String(coordinate.longitude)
     }
 }

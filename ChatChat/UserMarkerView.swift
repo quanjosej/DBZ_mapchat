@@ -13,7 +13,7 @@ class UserMarkerView: MKMarkerAnnotationView {
             
             // 2
             markerTintColor = .black
-            glyphText = String("hhhjgh")
+            glyphText = String(describing: user.title)
         }
     }
 }

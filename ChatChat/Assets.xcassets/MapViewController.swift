@@ -1,10 +1,3 @@
-//
-//  MapViewController.swift
-//  ChatChat
-//
-//  Copyright © 2017 Razeware LLC. All rights reserved.
-//
-
 import UIKit
 import MapKit
 import CoreLocation
@@ -46,6 +39,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             DBZUsersRef.child("connected_status").onDisconnectSetValue(false)
             DBZUsersRef.child("connected_status").setValue(true)
             
+
+
+//            DBZUsersRef.child("name").setValue("testUser2")
+//            DBZUsersRef.child("latitude").setValue(43.694325)
+//            DBZUsersRef.child("longitude").setValue(-79.3967)
+            
             loadOnlineDbzUsers()
             observeDbzUsers()
             
@@ -53,15 +52,26 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
     
+    //Initial user load
     private func loadOnlineDbzUsers() {
-        
-        DBZUsersRef.queryEqual(toValue: "true", childKey: "connected_status").observeSingleEvent(of: .value, with: {(snap) in
-            let currUser: User = User(userId: snap.key , chatChannelId: "sss", latitude: 43.654925, longitude: -79.3967 )
-            self.connectedUsers.append(currUser)
-            self.mapView.addAnnotation(currUser)
+        Database.database().reference().child("dbz_users").observeSingleEvent(of: .value, with: {(snapshot) in
+
+            let enumerator = snapshot.children
+            while let rest = enumerator.nextObject() as? DataSnapshot {
+                let dbzUserData = rest.value as! Dictionary<String, AnyObject>
+                let currUser: User = User(userId: rest.key, name: dbzUserData["name"] as! String, latitude: Double(dbzUserData["latitude"] as! String)!, longitude: Double(dbzUserData["longitude"] as! String)!)
+
+                if rest.key != (Auth.auth().currentUser?.uid)!{
+                    self.connectedUsers.append(currUser)
+                    self.mapView.addAnnotation(currUser)
+                }
+
+            }
+            
         })
     }
     
+    //Persistant user check
     private func observeDbzUsers() {
         dbzUsersRefHandle = Database.database().reference().child("dbz_users").observe(.childChanged, with: { (snapshot) -> Void in
             let dbzUserData = snapshot.value as! Dictionary<String, AnyObject>
@@ -71,14 +81,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 self.connectedUsers.remove(at: firstNegative)
             }
             
-            if (dbzUserData["connected_status"] as! Bool) {
-                let curr_user : User = User(userId: snapshot.key , chatChannelId: "sss", latitude: Double(dbzUserData["latitude"] as! String)!, longitude: Double(dbzUserData["longitude"] as! String)! )
+            if (dbzUserData["connected_status"] as! Bool && snapshot.key != (Auth.auth().currentUser?.uid)!) {
+                let curr_user : User = User(userId: snapshot.key , name: dbzUserData["name"] as! String, latitude: Double(dbzUserData["latitude"] as! String)!, longitude: Double(dbzUserData["longitude"] as! String)! )
                 self.connectedUsers.append(curr_user)
                 self.mapView.addAnnotation(curr_user)
             }
             
         })
-        
     }
     
     func centerMapOnLocation(location: CLLocation) {
@@ -86,12 +95,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                                                   regionRadius, regionRadius)
         mapView.showsUserLocation = true
         mapView.setRegion(coordinateRegion, animated: true)
-  
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-           
             //Set curr user gps location
             DBZUsersRef.child("latitude").setValue(String(describing: location.coordinate.latitude))
             DBZUsersRef.child("longitude").setValue(String(describing: location.coordinate.longitude))
@@ -141,7 +148,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             MKLaunchOptionsDirectionsModeDriving]
         
         if (control as? UIButton)?.buttonType == UIButtonType.detailDisclosure {
-            mapView.deselectAnnotation(view.annotation, animated: false)
+            mapView.deselectAnnotation(view.annotation, animated: true)
             self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id:"ffhg", name:"jjjk"))
         }
     }
