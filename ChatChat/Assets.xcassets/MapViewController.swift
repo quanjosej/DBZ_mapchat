@@ -38,15 +38,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             //Set curr user connection statues
             DBZUsersRef.child("connected_status").onDisconnectSetValue(false)
             DBZUsersRef.child("connected_status").setValue(true)
+            
+            loadOnlineDbzUsers()
             observeDbzUsers()
             
         }
+        
+    }
+    
+    private func loadOnlineDbzUsers() {
+        
+        DBZUsersRef.queryEqual(toValue: "true", childKey: "connected_status").observeSingleEvent(of: .value, with: {(snap) in
+            self.connectedUsers.append(Users(userId: snap.key , chatChannelId: "sss" ))
+        })
+        
     }
     
     private func observeDbzUsers() {
         dbzUsersRefHandle = Database.database().reference().child("dbz_users").observe(.childChanged, with: { (snapshot) -> Void in
             let dbzUserData = snapshot.value as! Dictionary<String, AnyObject>
-            print("-------------==32423452354--------")
             
             if let firstNegative = self.connectedUsers.index(where: { $0.userId == snapshot.key }) {
                 self.connectedUsers.remove(at: firstNegative)
@@ -54,8 +64,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             
             if (dbzUserData["connected_status"] as! Bool) {
                 self.connectedUsers.append(Users(userId: snapshot.key , chatChannelId: "sss" ))
-                print(snapshot.key)
-                print(dbzUserData["connected_status"])
             }
             
             
