@@ -10,7 +10,7 @@ import MapKit
 import CoreLocation
 import Firebase
 
-class MapViewController: UIViewController, CLLocationManagerDelegate{
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
     
     private lazy var DBZUsersRef: DatabaseReference = Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!)
     private var dbzUsersRefHandle: DatabaseHandle?
@@ -25,6 +25,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         // For use when the app is open & in the background
         locationManager.requestAlwaysAuthorization()
@@ -35,6 +36,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation // You can change the locaiton accuary here.
             locationManager.startUpdatingLocation()
+            
+            mapView.delegate = self
+            
+            mapView.register(UserMarkerView.self,
+                             forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
             
             //Set curr user connection statues
             DBZUsersRef.child("connected_status").onDisconnectSetValue(false)
@@ -50,7 +56,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     private func loadOnlineDbzUsers() {
         
         DBZUsersRef.queryEqual(toValue: "true", childKey: "connected_status").observeSingleEvent(of: .value, with: {(snap) in
-            let currUser = User(userId: snap.key , chatChannelId: "sss", latitude: 43.654325, longitude: -79.3967 )
+            let currUser: User = User(userId: snap.key , chatChannelId: "sss", latitude: 43.654925, longitude: -79.3967 )
             self.connectedUsers.append(currUser)
             self.mapView.addAnnotation(currUser)
         })
@@ -66,7 +72,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             }
             
             if (dbzUserData["connected_status"] as! Bool) {
-                let curr_user = User(userId: snapshot.key , chatChannelId: "sss", latitude: Double(dbzUserData["latitude"] as! String)!, longitude: Double(dbzUserData["longitude"] as! String)! )
+                let curr_user : User = User(userId: snapshot.key , chatChannelId: "sss", latitude: Double(dbzUserData["latitude"] as! String)!, longitude: Double(dbzUserData["longitude"] as! String)! )
                 self.connectedUsers.append(curr_user)
                 self.mapView.addAnnotation(curr_user)
             }
@@ -80,6 +86,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
                                                                   regionRadius, regionRadius)
         mapView.showsUserLocation = true
         mapView.setRegion(coordinateRegion, animated: true)
+  
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -125,6 +132,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
+                 calloutAccessoryControlTapped control: UIControl) {
+        let location = view.annotation as! User
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey:
+            MKLaunchOptionsDirectionsModeDriving]
+        
+        if (control as? UIButton)?.buttonType == UIButtonType.detailDisclosure {
+            mapView.deselectAnnotation(view.annotation, animated: false)
+            print("---=-=-=23452=3-5=-=-=-=-=53311///")
+        }
     }
 
 }

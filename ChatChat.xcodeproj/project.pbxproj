@@ -22,6 +22,7 @@
 		BB53558F1BEF7E9700321277 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB53558E1BEF7E9700321277 /* ChatViewController.swift */; };
 		D366DFDC1FC159D300CAF112 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366DFDB1FC159D300CAF112 /* MapViewController.swift */; };
 		D389FC381FC1887700EB8FC7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389FC371FC1887700EB8FC7 /* User.swift */; };
+		D389FC3B1FC1ABB100EB8FC7 /* UserMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389FC3A1FC1ABB100EB8FC7 /* UserMarkerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		D366DFDB1FC159D300CAF112 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = Assets.xcassets/MapViewController.swift; sourceTree = "<group>"; };
 		D389FC371FC1887700EB8FC7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D389FC391FC19A7F00EB8FC7 /* ChatChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatChat.entitlements; sourceTree = "<group>"; };
+		D389FC3A1FC1ABB100EB8FC7 /* UserMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMarkerView.swift; sourceTree = "<group>"; };
 		E8DDF38A1BEF88DC00B5F45A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		E8DDF38C1BEF88E200B5F45A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -151,6 +153,7 @@
 				BB53557D1BEF765800321277 /* Main.storyboard */,
 				BB5355821BEF765800321277 /* LaunchScreen.storyboard */,
 				459E535E1D4BF36A00E675A5 /* License */,
+				D389FC3A1FC1ABB100EB8FC7 /* UserMarkerView.swift */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				45A0D8FE1D49508800F26729 /* CreateChannelCell.swift in Sources */,
 				D389FC381FC1887700EB8FC7 /* User.swift in Sources */,
 				D366DFDC1FC159D300CAF112 /* MapViewController.swift in Sources */,
+				D389FC3B1FC1ABB100EB8FC7 /* UserMarkerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +383,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = RIC;
@@ -426,7 +430,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = RIC;
 				SDKROOT = iphoneos;
@@ -447,7 +451,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ChatChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.jose.dbzchat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.mapchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ChatChat/ChatChat-Bridging-Header.h";
@@ -469,7 +473,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ChatChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.jose.dbzchat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.mapchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ChatChat/ChatChat-Bridging-Header.h";
