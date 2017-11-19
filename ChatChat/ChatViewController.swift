@@ -30,7 +30,7 @@ final class ChatViewController: JSQMessagesViewController {
     var channelRef: DatabaseReference?
     var channel: Channel? {
         didSet {
-            title = channel?.name
+//            title = channel?.name
         }
     }
     var messages = [JSQMessage]()

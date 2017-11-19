@@ -8,8 +8,13 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
 
 class MapViewController: UIViewController, CLLocationManagerDelegate{
+    
+    private lazy var DBZUsersRef: DatabaseReference = Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!)
+    private var dbzUsersRefHandle: DatabaseHandle?
+    private var connectedUsers: [Users] = []
     
     @IBOutlet weak var mapView: MKMapView!
     let regionRadius: CLLocationDistance = 1000
@@ -20,7 +25,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // For use when the app is open & in the background
         locationManager.requestAlwaysAuthorization()
         
@@ -30,7 +34,33 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation // You can change the locaiton accuary here.
             locationManager.startUpdatingLocation()
+            
+            //Set curr user connection statues
+            DBZUsersRef.child("connected_status").onDisconnectSetValue(false)
+            DBZUsersRef.child("connected_status").setValue(true)
+            observeDbzUsers()
+            
         }
+    }
+    
+    private func observeDbzUsers() {
+        dbzUsersRefHandle = Database.database().reference().child("dbz_users").observe(.childChanged, with: { (snapshot) -> Void in
+            let dbzUserData = snapshot.value as! Dictionary<String, AnyObject>
+            print("-------------==32423452354--------")
+            
+            if let firstNegative = self.connectedUsers.index(where: { $0.userId == snapshot.key }) {
+                self.connectedUsers.remove(at: firstNegative)
+            }
+            
+            if (dbzUserData["connected_status"] as! Bool) {
+                self.connectedUsers.append(Users(userId: snapshot.key , chatChannelId: "sss" ))
+                print(snapshot.key)
+                print(dbzUserData["connected_status"])
+            }
+            
+            
+        })
+        
     }
     
     func centerMapOnLocation(location: CLLocation) {
@@ -40,10 +70,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    // Print out the location to the console
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            print(location.coordinate)
+           
+            //Set curr user gps location
+            DBZUsersRef.child("latitude").setValue(String(describing: location.coordinate.latitude))
+            DBZUsersRef.child("longitude").setValue(String(describing: location.coordinate.longitude))
             centerMapOnLocation(location: location)
         }
     }
