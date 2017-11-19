@@ -159,15 +159,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     for channel_user in channelData["users"] as! Array<String> {
                         if(channel_user == (Auth.auth().currentUser?.uid)!) || (channel_user == curr_user.userId ){
                             self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id: rest.key, name:channelData["name"] as! String))
+                            return
                         }
                     }
                 }
-                
+                let newChannelRef = self.channelRef.childByAutoId()
+                let channelItem = [
+                    "name": self.senderDisplayName! + " Chat",
+                    "users": [Auth.auth().currentUser?.uid, curr_user.userId ]
+                    ] as [String : Any]
+                newChannelRef.setValue(channelItem)
+                self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id:newChannelRef.key, name: channelItem["name"] as! String))
+                return
             })
             
-            
-            
-//            self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id:"ffhg", name:"jjjk"))
         }
     }
     
