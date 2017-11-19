@@ -41,7 +41,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             DBZUsersRef.child("connected_status").setValue(true)
             
             loadOnlineDbzUsers()
-            displayUsersOnMap()
             observeDbzUsers()
             
         }
@@ -51,18 +50,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     private func loadOnlineDbzUsers() {
         
         DBZUsersRef.queryEqual(toValue: "true", childKey: "connected_status").observeSingleEvent(of: .value, with: {(snap) in
-            self.connectedUsers.append(User(userId: snap.key , chatChannelId: "sss", latitude: 43.654335, longitude: -79.3957 ))
+            let currUser = User(userId: snap.key , chatChannelId: "sss", latitude: 43.654325, longitude: -79.3967 )
+            self.connectedUsers.append(currUser)
+            self.mapView.addAnnotation(currUser)
         })
-        
-    }
-    
-    private func displayUsersOnMap() {
-        //Clear old annotations
-        let allAnnotations = self.mapView.annotations
-        self.mapView.removeAnnotations(allAnnotations)
-        
-        self.mapView.addAnnotations(connectedUsers)
-        
     }
     
     private func observeDbzUsers() {
@@ -70,14 +61,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
             let dbzUserData = snapshot.value as! Dictionary<String, AnyObject>
             
             if let firstNegative = self.connectedUsers.index(where: { $0.userId == snapshot.key }) {
+                self.mapView.removeAnnotation(self.connectedUsers[firstNegative])
                 self.connectedUsers.remove(at: firstNegative)
             }
             
             if (dbzUserData["connected_status"] as! Bool) {
-                self.connectedUsers.append(User(userId: snapshot.key , chatChannelId: "sss", latitude: Double(dbzUserData["latitude"] as! String)!, longitude: Double(dbzUserData["longitude"] as! String)! ))
+                let curr_user = User(userId: snapshot.key , chatChannelId: "sss", latitude: Double(dbzUserData["latitude"] as! String)!, longitude: Double(dbzUserData["longitude"] as! String)! )
+                self.connectedUsers.append(curr_user)
+                self.mapView.addAnnotation(curr_user)
             }
-            
-            self.displayUsersOnMap()
             
         })
         
