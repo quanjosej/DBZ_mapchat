@@ -1,25 +1,3 @@
-/*
-* Copyright (c) 2015 Razeware LLC
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*/
-
 import UIKit
 import Firebase
 
@@ -27,8 +5,6 @@ class LoginViewController: UIViewController {
   
   @IBOutlet weak var nameField: UITextField!
   @IBOutlet weak var bottomLayoutGuideConstraint: NSLayoutConstraint!
-  
-  // MARK: View Lifecycle
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -43,14 +19,14 @@ class LoginViewController: UIViewController {
   }
   
   @IBAction func loginDidTouch(_ sender: AnyObject) {
-    if nameField?.text != "" { // 1
-        Auth.auth().signInAnonymously(completion: { (user, error) in // 2
-            if let err = error { // 3
+    if nameField?.text != "" {
+        Auth.auth().signInAnonymously(completion: { (user, error) in
+            if let err = error {
                 print(err.localizedDescription)
                 return
             }
             
-            self.performSegue(withIdentifier: "LoginToChat", sender: nil) // 4
+            self.performSegue(withIdentifier: "LoginToChat", sender: nil)
         })
     }
   }
@@ -70,10 +46,10 @@ class LoginViewController: UIViewController {
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        let navVc = segue.destination as! UINavigationController // 1
-        let channelVc = navVc.viewControllers.first as! ChannelListViewController // 2
+        let navVc = segue.destination as! UINavigationController
+        let mapVc = navVc.viewControllers.first as! MapViewController
         
-        channelVc.senderDisplayName = nameField?.text // 3
+        mapVc.senderDisplayName = nameField?.text
     }
   
 }

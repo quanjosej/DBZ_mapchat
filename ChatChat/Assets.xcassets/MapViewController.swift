@@ -8,6 +8,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     private lazy var DBZUsersRef: DatabaseReference = Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!)
     private var dbzUsersRefHandle: DatabaseHandle?
     private var connectedUsers: [User] = []
+    
+    var senderDisplayName: String?
+//    private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
+//    private var channelRefHandle: DatabaseHandle?
 
     
     @IBOutlet weak var mapView: MKMapView!
@@ -149,6 +153,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         if (control as? UIButton)?.buttonType == UIButtonType.detailDisclosure {
             mapView.deselectAnnotation(view.annotation, animated: true)
+            print("--==-=-=-=-==")
+            print(location.userId)
+            print((Auth.auth().currentUser?.uid)!)
             self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id:"ffhg", name:"jjjk"))
         }
     }

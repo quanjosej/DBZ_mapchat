@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k1L-YN-3rW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -84,12 +84,12 @@
                     <connections>
                         <outlet property="bottomLayoutGuideConstraint" destination="MVT-E5-fDK" id="bNU-sI-B85"/>
                         <outlet property="nameField" destination="5Ud-se-jh6" id="VUy-ik-PQf"/>
-                        <segue destination="8CN-Ua-xvG" kind="presentation" identifier="LoginToChat" id="C1q-pb-YWz"/>
+                        <segue destination="k1L-YN-3rW" kind="presentation" identifier="LoginToChat" id="B7t-oy-4t7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1302" y="100"/>
+            <point key="canvasLocation" x="-2231" y="63"/>
         </scene>
         <!--Channel List View Controller-->
         <scene sceneID="bg1-OT-nd2">
