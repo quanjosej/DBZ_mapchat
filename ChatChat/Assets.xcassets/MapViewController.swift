@@ -59,9 +59,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
                 let dbzUserData = rest.value as! Dictionary<String, AnyObject>
-                let currUser: User = User(userId: rest.key, name: dbzUserData["name"] as! String, latitude: Double(dbzUserData["latitude"] as! String)!, longitude: Double(dbzUserData["longitude"] as! String)!)
 
-                if rest.key != (Auth.auth().currentUser?.uid)!{
+                if (rest.key != (Auth.auth().currentUser?.uid)! && dbzUserData["connected_status"] as! Bool ){
+                    let currUser: User = User(userId: rest.key, name: dbzUserData["name"] as! String, latitude: Double(dbzUserData["latitude"] as! String)!, longitude: Double(dbzUserData["longitude"] as! String)!)
                     self.connectedUsers.append(currUser)
                     self.mapView.addAnnotation(currUser)
                 }
@@ -147,6 +147,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let launchOptions = [MKLaunchOptionsDirectionsModeKey:
             MKLaunchOptionsDirectionsModeDriving]
         
+        let users_in_channel:Array<String> = [(Auth.auth().currentUser?.uid)!, curr_user.userId ]
+        let users_in_channel_set = Set(users_in_channel.map { $0 })
+
+        
         if (control as? UIButton)?.buttonType == UIButtonType.detailDisclosure {
             mapView.deselectAnnotation(view.annotation, animated: true)
             
@@ -155,18 +159,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 while let rest = enumerator.nextObject() as? DataSnapshot {
                     let channelData = rest.value as! Dictionary<String, AnyObject>
                     
-                    //Check for existing chat channel between the users
-                    for channel_user in channelData["users"] as! Array<String> {
-                        if(channel_user == (Auth.auth().currentUser?.uid)!) || (channel_user == curr_user.userId ){
-                            self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id: rest.key, name:channelData["name"] as! String))
-                            return
-                        }
+                    //Check if users are in the channels
+                    let curr_users_in_channel_set = Set((channelData["users"] as! Array<String>).map { $0 })
+                    if( users_in_channel_set.isSubset(of: curr_users_in_channel_set)){
+                        self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id: rest.key, name:channelData["name"] as! String))
+                        return
                     }
+                    
                 }
                 let newChannelRef = self.channelRef.childByAutoId()
                 let channelItem = [
                     "name": self.senderDisplayName! + " Chat",
-                    "users": [Auth.auth().currentUser?.uid, curr_user.userId ]
+                    "users": users_in_channel
                     ] as [String : Any]
                 newChannelRef.setValue(channelItem)
                 self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id:newChannelRef.key, name: channelItem["name"] as! String))
