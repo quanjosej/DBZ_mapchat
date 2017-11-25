@@ -10,6 +10,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         dismiss(animated: true, completion: nil)
     }
     
+    @IBOutlet weak var statusLabel: UINavigationItem!
+    
     private lazy var DBZUsersRef: DatabaseReference = Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!)
     private var dbzUsersRefHandle: DatabaseHandle?
     private var connectedUsers: [User] = []
@@ -48,7 +50,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             DBZUsersRef.child("connected_status").onDisconnectSetValue(false)
             DBZUsersRef.child("connected_status").setValue(true)
 
-//            DBZUsersRef.child("name").setValue(senderDisplayName)
+            
+            DBZUsersRef.child("connected_status").observe(.value, with: { snapshot in
+//                self.statusLabel.title = snapshot.value as! String
+                if(snapshot.value as! Bool){
+                    self.statusLabel.title = "Online"
+                }
+                else{
+                    self.statusLabel.title = "Disconnected"
+                }
+            })
             
             loadOnlineDbzUsers()
             observeDbzUsers()
