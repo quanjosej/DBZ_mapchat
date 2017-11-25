@@ -6,6 +6,8 @@ class ProfileViewController: UIViewController {
     private lazy var signinUsersRef: DatabaseReference = Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!)
     
     var profileUsersRef: DatabaseReference? = nil
+    private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
+    private var channelRefHandle: DatabaseHandle?
 
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
@@ -53,9 +55,51 @@ class ProfileViewController: UIViewController {
        self.performSegue(withIdentifier: "showUserList", sender: profileUsersRef?.child("friends"))
     }
     
+    @IBAction func showChat(_ sender: Any) {
+        let curr_user = profileUsersRef?.key
+        
+        let users_in_channel:Array<String> = [(Auth.auth().currentUser?.uid)!, curr_user!]
+        let users_in_channel_set = Set(users_in_channel.map { $0 })
+        
+        
+            
+            channelRef.observeSingleEvent(of: .value, with: {(snapshot) in
+                let enumerator = snapshot.children
+                while let rest = enumerator.nextObject() as? DataSnapshot {
+                    let channelData = rest.value as! Dictionary<String, AnyObject>
+                    
+                    //Check if users are in the channels
+                    let curr_users_in_channel_set = Set((channelData["users"] as! Array<String>).map { $0 })
+                    if( users_in_channel_set.isSubset(of: curr_users_in_channel_set)){
+                        self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id: rest.key, name:channelData["name"] as! String))
+                        
+                        return
+                    }
+                    
+                }
+                let newChannelRef = self.channelRef.childByAutoId()
+                let channelItem = [
+                    "name": self.userNameLabel.text! + " Chat",
+                    "users": users_in_channel
+                    ] as [String : Any]
+                newChannelRef.setValue(channelItem)
+                self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id:newChannelRef.key, name: channelItem["name"] as! String))
+                return
+            })
+        
+    }
+    
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
+        
+        if let channel = sender as? Channel {
+            let chatVc = segue.destination as! ChatViewController
+            
+            chatVc.senderDisplayName = self.userNameLabel.text! + " Chat"
+            chatVc.channel = channel
+            chatVc.channelRef = channelRef.child(channel.id)
+        }
         
         if let databaseUserList = sender as? DatabaseReference {
             let userListVc = segue.destination as! FriendListViewController

@@ -150,8 +150,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
         let curr_user = view.annotation as! User
-        let launchOptions = [MKLaunchOptionsDirectionsModeKey:
-            MKLaunchOptionsDirectionsModeDriving]
         
         let users_in_channel:Array<String> = [(Auth.auth().currentUser?.uid)!, curr_user.userId ]
         let users_in_channel_set = Set(users_in_channel.map { $0 })

@@ -241,6 +241,9 @@
                                 <state key="normal" title="Chat">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="showChat:" destination="xQw-nW-6u2" eventType="touchUpInside" id="6sC-pQ-3xG"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJu-Wy-OFI">
                                 <rect key="frame" x="104" y="70" width="167.5" height="42"/>
@@ -266,7 +269,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0K9-hA-eTI">
-                                <rect key="frame" x="16" y="387" width="355" height="40"/>
+                                <rect key="frame" x="4" y="323" width="355" height="40"/>
                                 <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="b7S-pm-YdE"/>
@@ -322,11 +325,12 @@
                         <outlet property="statusLabel" destination="krU-IC-VsX" id="Uig-Iy-r9D"/>
                         <outlet property="userNameLabel" destination="jJu-Wy-OFI" id="mbC-zs-87b"/>
                         <segue destination="Agl-KK-flJ" kind="show" identifier="showUserList" id="SmH-tv-4Cz"/>
+                        <segue destination="IHh-zK-Dgq" kind="show" identifier="ShowChannelChat" id="FnH-zj-iNW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSj-zv-8ik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138" y="1771"/>
+            <point key="canvasLocation" x="-151" y="1780"/>
         </scene>
         <!--User List-->
         <scene sceneID="KBp-bk-8IS">
