@@ -190,7 +190,7 @@
             </objects>
             <point key="canvasLocation" x="1487" y="869"/>
         </scene>
-        <!--Status-->
+        <!--Map-->
         <scene sceneID="bSs-3n-jeA">
             <objects>
                 <viewController id="kBB-em-wPM" customClass="MapViewController" customModule="ChatChat" customModuleProvider="target" sceneMemberID="viewController">
@@ -212,7 +212,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XAq-Yp-uUR"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Status" id="s2Y-Dg-405">
+                    <navigationItem key="navigationItem" title="Map" id="s2Y-Dg-405">
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="Cs2-x7-kg9" userLabel="Profile">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -385,10 +385,10 @@
             </objects>
             <point key="canvasLocation" x="-1335" y="1599"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="vrO-OF-bar">
             <objects>
-                <viewController id="xQw-nW-6u2" sceneMemberID="viewController">
+                <viewController id="xQw-nW-6u2" customClass="ProfileViewController" customModule="ChatChat" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zfa-UO-6d7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -417,15 +417,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0K9-hA-eTI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VR3-zN-cu4">
                                 <rect key="frame" x="10" y="406" width="355" height="40"/>
-                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.43229166666666669" green="0.56797960069444442" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="b7S-pm-YdE"/>
+                                    <constraint firstAttribute="height" constant="40" id="v4k-VE-om5"/>
                                 </constraints>
-                                <state key="normal" title="Show Friends">
+                                <state key="normal" title="Chat">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="0.4223361545138889" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJu-Wy-OFI">
@@ -441,29 +440,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fF-dz-VQk">
-                                <rect key="frame" x="10" y="486" width="355" height="40"/>
+                                <rect key="frame" x="10" y="566" width="355" height="40"/>
                                 <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="OM1-ya-5gJ"/>
                                 </constraints>
-                                <state key="normal" title="Add to Friends">
+                                <state key="normal" title="Remove/Add as Friends">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="0.42233615450000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VR3-zN-cu4">
-                                <rect key="frame" x="10" y="566" width="355" height="40"/>
-                                <color key="backgroundColor" red="0.43229166666666669" green="0.56797960069444442" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0K9-hA-eTI">
+                                <rect key="frame" x="10" y="486" width="355" height="40"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="v4k-VE-om5"/>
+                                    <constraint firstAttribute="height" constant="40" id="b7S-pm-YdE"/>
                                 </constraints>
-                                <state key="normal" title="Chat">
+                                <state key="normal" title="Show Friends">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.4223361545138889" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="0K9-hA-eTI" firstAttribute="top" secondItem="VR3-zN-cu4" secondAttribute="bottom" constant="40" id="E5j-Lp-U0P"/>
                             <constraint firstItem="krU-IC-VsX" firstAttribute="top" secondItem="jJu-Wy-OFI" secondAttribute="bottom" constant="10" id="FHB-6q-6E4"/>
                             <constraint firstItem="cTa-7X-F1m" firstAttribute="top" secondItem="krU-IC-VsX" secondAttribute="bottom" constant="70" id="GAu-fC-EaN"/>
                             <constraint firstItem="WUL-by-Ycc" firstAttribute="leading" secondItem="JaL-Dv-W1Y" secondAttribute="leading" constant="85" id="Kao-vh-RQO"/>
@@ -474,12 +475,10 @@
                             <constraint firstItem="krU-IC-VsX" firstAttribute="centerX" secondItem="JaL-Dv-W1Y" secondAttribute="centerX" id="P0l-PM-H5D"/>
                             <constraint firstItem="5fF-dz-VQk" firstAttribute="centerX" secondItem="JaL-Dv-W1Y" secondAttribute="centerX" id="W75-kY-zpR"/>
                             <constraint firstItem="cTa-7X-F1m" firstAttribute="leading" secondItem="JaL-Dv-W1Y" secondAttribute="leading" constant="31" id="WLW-aM-HYW"/>
-                            <constraint firstItem="0K9-hA-eTI" firstAttribute="top" secondItem="WUL-by-Ycc" secondAttribute="bottom" constant="70" id="Wwy-Sl-9gf"/>
                             <constraint firstItem="VbZ-Cb-TeW" firstAttribute="top" secondItem="krU-IC-VsX" secondAttribute="bottom" constant="69" id="YUc-rk-685"/>
                             <constraint firstItem="JaL-Dv-W1Y" firstAttribute="trailing" secondItem="5fF-dz-VQk" secondAttribute="trailing" constant="10" id="ZQi-HB-t4c"/>
                             <constraint firstItem="VR3-zN-cu4" firstAttribute="centerX" secondItem="JaL-Dv-W1Y" secondAttribute="centerX" id="ZwY-gY-Ys0"/>
                             <constraint firstItem="Ukz-fM-x56" firstAttribute="leading" secondItem="WUL-by-Ycc" secondAttribute="trailing" constant="40" id="bxc-7w-3GH"/>
-                            <constraint firstItem="VR3-zN-cu4" firstAttribute="top" secondItem="5fF-dz-VQk" secondAttribute="bottom" constant="40" id="gvD-So-Xz4"/>
                             <constraint firstItem="0K9-hA-eTI" firstAttribute="centerX" secondItem="JaL-Dv-W1Y" secondAttribute="centerX" id="gx8-p6-d9y"/>
                             <constraint firstItem="0K9-hA-eTI" firstAttribute="leading" secondItem="JaL-Dv-W1Y" secondAttribute="leading" constant="10" id="hqU-ce-f6u"/>
                             <constraint firstItem="WUL-by-Ycc" firstAttribute="top" secondItem="cTa-7X-F1m" secondAttribute="bottom" constant="40" id="hzB-aE-h8S"/>
@@ -488,9 +487,18 @@
                             <constraint firstItem="VbZ-Cb-TeW" firstAttribute="leading" secondItem="cTa-7X-F1m" secondAttribute="trailing" constant="40" id="rKC-ef-BLX"/>
                             <constraint firstItem="VR3-zN-cu4" firstAttribute="leading" secondItem="JaL-Dv-W1Y" secondAttribute="leading" constant="10" id="tqJ-zX-zr9"/>
                             <constraint firstItem="5fF-dz-VQk" firstAttribute="top" secondItem="0K9-hA-eTI" secondAttribute="bottom" constant="40" id="wUB-ck-5Du"/>
+                            <constraint firstItem="VR3-zN-cu4" firstAttribute="top" secondItem="WUL-by-Ycc" secondAttribute="bottom" constant="70" id="x7H-9T-oTo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JaL-Dv-W1Y"/>
                     </view>
+                    <navigationItem key="navigationItem" id="VZV-zs-iS7">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="XKy-yk-6oh">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="logout:" destination="xQw-nW-6u2" id="oZH-Zo-8cb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSj-zv-8ik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
