@@ -51,15 +51,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             DBZUsersRef.child("connected_status").setValue(true)
 
             
-            DBZUsersRef.child("connected_status").observe(.value, with: { snapshot in
-                if(snapshot.value as! Bool){
-                    self.statusLabel.title = "Online"
-                }
-                else{
-                    self.statusLabel.title = "Disconnected"
-                }
-            })
-            
             loadOnlineDbzUsers()
             observeDbzUsers()
             

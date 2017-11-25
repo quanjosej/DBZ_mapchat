@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         if(profileUsersRef == nil || profileUsersRef?.key == signinUsersRef.key){
             addRemoveFriendButton.isHidden = true
             chatButton.isHidden = true
