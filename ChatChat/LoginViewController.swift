@@ -48,6 +48,7 @@ class LoginViewController: UIViewController {
                                    password: passwordField.text!) { user, error in
                 if error == nil {
                 Database.database().reference().child("dbz_users").child((user?.uid)!).child("name").setValue(nameField.text!)
+                Database.database().reference().child("dbz_users").child((user?.uid)!).child("email").setValue(emailField.text!)
                     
                     Auth.auth().signIn(withEmail: self.textFieldLoginEmail.text!,
                                            password: self.textFieldLoginPassword.text!)

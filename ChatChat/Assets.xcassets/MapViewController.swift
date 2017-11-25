@@ -52,7 +52,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
             
             DBZUsersRef.child("connected_status").observe(.value, with: { snapshot in
-//                self.statusLabel.title = snapshot.value as! String
                 if(snapshot.value as! Bool){
                     self.statusLabel.title = "Online"
                 }
