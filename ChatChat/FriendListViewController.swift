@@ -72,16 +72,4 @@ class FriendListViewController: UITableViewController {
         
     }
     
-    //    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
-    //        if !isCompleted {
-    //            cell.accessoryType = .none
-    //            cell.textLabel?.textColor = UIColor.black
-    //            cell.detailTextLabel?.textColor = UIColor.black
-    //        } else {
-    //            cell.accessoryType = .checkmark
-    //            cell.textLabel?.textColor = UIColor.gray
-    //            cell.detailTextLabel?.textColor = UIColor.gray
-    //        }
-    //    }
-    
 }

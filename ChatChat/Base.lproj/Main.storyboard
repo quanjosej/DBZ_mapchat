@@ -368,6 +368,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="User List" id="2Va-1D-4TN"/>
+                    <connections>
+                        <segue destination="xQw-nW-6u2" kind="show" identifier="showUserProfile" id="Wcq-aS-pAi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2X-ce-iNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -419,4 +422,7 @@
             <point key="canvasLocation" x="742" y="1771"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Wcq-aS-pAi"/>
+    </inferredMetricsTieBreakers>
 </document>
