@@ -69,7 +69,18 @@ class FriendListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         let userItem = items[indexPath.row]
+        self.performSegue(withIdentifier: "showUserProfile", sender: Database.database().reference().child("dbz_users").child(userItem.userId))
+    }
+    
+    // MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         
+        if let databaseUserProfile = sender as? DatabaseReference {
+            let userProfileVc = segue.destination as! ProfileViewController
+            
+            userProfileVc.profileUsersRef = databaseUserProfile
+        }
     }
     
 }
