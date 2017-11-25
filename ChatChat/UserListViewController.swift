@@ -14,8 +14,6 @@ class UserListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!).child("friends").child("JDlZcE6OKcOShAlDKGXCVXgz0s23").child("since").setValue(NSDate().timeIntervalSince1970)
-        
         tableView.allowsMultipleSelectionDuringEditing = false
         
 

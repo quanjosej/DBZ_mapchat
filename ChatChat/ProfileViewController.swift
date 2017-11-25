@@ -8,6 +8,7 @@ class ProfileViewController: UIViewController {
     var profileUsersRef: DatabaseReference? = nil
     private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
     private var channelRefHandle: DatabaseHandle?
+    private var isFriend: Bool = false
 
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
@@ -43,6 +44,18 @@ class ProfileViewController: UIViewController {
             self.emailLabel.text = snapshot.value as? String
         })
         
+        Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!).child("friends").child((profileUsersRef?.key)!).observe(.value, with: { snapshot in
+            print(snapshot.exists())
+            if(snapshot.exists()){
+                self.isFriend = true
+                self.addRemoveFriendButton.setTitle("Remove as Friends", for: .normal)
+            }
+            else{
+                self.isFriend = false
+                self.addRemoveFriendButton.setTitle("Add as Friends", for: .normal)
+            }
+        })
+        
     }
     
     @IBAction func logout(_ sender: Any) {
@@ -54,6 +67,16 @@ class ProfileViewController: UIViewController {
     @IBAction func showUserList(_ sender: Any) {
        self.performSegue(withIdentifier: "showUserList", sender: profileUsersRef?.child("friends"))
     }
+    
+    @IBAction func addFriend(_ sender: Any) {
+        if(self.isFriend){
+            Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!).child("friends").child((self.profileUsersRef?.key)!).removeValue()
+        }
+        else{
+             Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!).child("friends").child((self.profileUsersRef?.key)!).child("name").setValue(self.userNameLabel.text)
+        }
+    }
+    
     
     @IBAction func showChat(_ sender: Any) {
         let curr_user = profileUsersRef?.key

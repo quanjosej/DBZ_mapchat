@@ -14,10 +14,6 @@ class FriendListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!).child("friends").child("bJGFsxXYjeWv2VqqlO5OjaIdMPj1").child("since").setValue(NSDate().timeIntervalSince1970)
-        
-        Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!).child("friends").child("bJGFsxXYjeWv2VqqlO5OjaIdMPj1").child("name").setValue("sss")
-        
         tableView.allowsMultipleSelectionDuringEditing = false
         
         
