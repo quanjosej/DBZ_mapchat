@@ -42,10 +42,13 @@ class LoginViewController: UIViewController {
                                         
             let emailField = alert.textFields![0]
             let passwordField = alert.textFields![1]
+            let nameField = alert.textFields![2]
 
             Auth.auth().createUser(withEmail: emailField.text!,
                                    password: passwordField.text!) { user, error in
                 if error == nil {
+                Database.database().reference().child("dbz_users").child((user?.uid)!).child("name").setValue(nameField.text!)
+                    
                     Auth.auth().signIn(withEmail: self.textFieldLoginEmail.text!,
                                            password: self.textFieldLoginPassword.text!)
                 }
@@ -74,19 +77,14 @@ class LoginViewController: UIViewController {
             textPassword.placeholder = "Enter your password"
         }
         
+        alert.addTextField { textName in
+            textName.placeholder = "Enter your name"
+        }
+        
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
-    }
-    
-    // MARK: Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        let navVc = segue.destination as! UINavigationController
-        let mapVc = navVc.viewControllers.first as! MapViewController
-        
-        mapVc.senderDisplayName = textFieldLoginEmail?.text
     }
   
 }

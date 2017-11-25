@@ -4,6 +4,11 @@ import CoreLocation
 import Firebase
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
+    @IBAction func logout(_ sender: Any) {
+        DBZUsersRef.child("connected_status").setValue(false)
+        try! Auth.auth().signOut()
+        dismiss(animated: true, completion: nil)
+    }
     
     private lazy var DBZUsersRef: DatabaseReference = Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!)
     private var dbzUsersRefHandle: DatabaseHandle?
@@ -43,7 +48,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             DBZUsersRef.child("connected_status").onDisconnectSetValue(false)
             DBZUsersRef.child("connected_status").setValue(true)
 
-            DBZUsersRef.child("name").setValue(senderDisplayName)
+//            DBZUsersRef.child("name").setValue(senderDisplayName)
             
             loadOnlineDbzUsers()
             observeDbzUsers()
@@ -193,18 +198,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Show the navigation bar on other view controllers
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        // Hide the navigation bar on the this view controller
+//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+//    }
+//    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        
+//        // Show the navigation bar on other view controllers
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//    }
 
 }
