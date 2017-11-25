@@ -15,7 +15,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var addRemoveFriendButton: UIButton!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +47,21 @@ class ProfileViewController: UIViewController {
         signinUsersRef.child("connected_status").setValue(false)
         try! Auth.auth().signOut()
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func showUserList(_ sender: Any) {
+       self.performSegue(withIdentifier: "showUserList", sender: profileUsersRef?.child("friends"))
+    }
+    
+    // MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if let databaseUserList = sender as? DatabaseReference {
+            let userListVc = segue.destination as! UserListViewController
+            
+            userListVc.ref = databaseUserList
+        }
     }
 }
 

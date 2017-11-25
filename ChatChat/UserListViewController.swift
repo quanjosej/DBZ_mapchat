@@ -5,7 +5,7 @@ class UserListViewController: UITableViewController {
     
     // MARK: Properties
     var items: [User] = []
-    var ref : DatabaseReference = Database.database().reference().child("dbz_users")
+    var ref : DatabaseReference? // = Database.database().reference().child("dbz_users")
     
     // MARK: UIViewController Lifecycle
     
@@ -15,7 +15,7 @@ class UserListViewController: UITableViewController {
         tableView.allowsMultipleSelectionDuringEditing = false
         
 
-        ref.observe(.value, with: { snapshot in
+        ref?.observe(.value, with: { snapshot in
 
             var newItems: [User] = []
             

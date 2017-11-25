@@ -68,7 +68,6 @@
                     <connections>
                         <outlet property="mapView" destination="PoP-0y-Cic" id="Kps-uA-p8k"/>
                         <outlet property="statusLabel" destination="s2Y-Dg-405" id="Riv-78-Ak8"/>
-                        <segue destination="IHh-zK-Dgq" kind="show" identifier="ShowChannelChat" id="x2V-VP-Dle"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VN-ts-33b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -270,7 +269,7 @@
                                     <color key="titleShadowColor" white="0.4223361545138889" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="uZz-1v-gg0" kind="show" id="jX0-te-3RE"/>
+                                    <action selector="showUserList:" destination="xQw-nW-6u2" eventType="touchUpInside" id="mMP-ud-G0c"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -315,6 +314,7 @@
                         <outlet property="logoutButton" destination="XKy-yk-6oh" id="Aer-0o-9RL"/>
                         <outlet property="statusLabel" destination="krU-IC-VsX" id="Uig-Iy-r9D"/>
                         <outlet property="userNameLabel" destination="jJu-Wy-OFI" id="mbC-zs-87b"/>
+                        <segue destination="uZz-1v-gg0" kind="show" identifier="showUserList" id="iLZ-Na-B8k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSj-zv-8ik" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -360,13 +360,7 @@
                             <outlet property="delegate" destination="uZz-1v-gg0" id="kPm-sx-yCS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="User List" id="2Va-1D-4TN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Gv3-3V-4od">
-                            <connections>
-                                <action selector="addButtonDidTouch:" destination="uZz-1v-gg0" id="J7h-SY-flI"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="User List" id="2Va-1D-4TN"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2X-ce-iNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
