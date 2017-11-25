@@ -57,6 +57,9 @@
                         <viewLayoutGuide key="safeArea" id="XAq-Yp-uUR"/>
                     </view>
                     <navigationItem key="navigationItem" id="s2Y-Dg-405">
+                        <barButtonItem key="leftBarButtonItem" title="Users" id="48q-dv-gzh">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="Cs2-x7-kg9" userLabel="Profile">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
