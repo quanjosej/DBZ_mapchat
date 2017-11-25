@@ -26,14 +26,10 @@ class FriendListViewController: UITableViewController {
             let enumerator = snapshot.children
             
             while let rest = enumerator.nextObject() as? DataSnapshot {
-                if(self.meRef.key == rest.key){
-                    continue
-                }
                 
                 let dbzUserData = rest.value as! Dictionary<String, AnyObject>
                 let currUser: User = User(userId: rest.key, name: dbzUserData["name"] as! String, latitude: 0, longitude: 0)
                 newItems.append(currUser)
-                print(rest)
                 
                 
             }
