@@ -151,35 +151,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                  calloutAccessoryControlTapped control: UIControl) {
         let curr_user = view.annotation as! User
         
-        let users_in_channel:Array<String> = [(Auth.auth().currentUser?.uid)!, curr_user.userId ]
-        let users_in_channel_set = Set(users_in_channel.map { $0 })
-
         
         if (control as? UIButton)?.buttonType == UIButtonType.detailDisclosure {
             mapView.deselectAnnotation(view.annotation, animated: true)
             
-            channelRef.observeSingleEvent(of: .value, with: {(snapshot) in
-                let enumerator = snapshot.children
-                while let rest = enumerator.nextObject() as? DataSnapshot {
-                    let channelData = rest.value as! Dictionary<String, AnyObject>
-                    
-                    //Check if users are in the channels
-                    let curr_users_in_channel_set = Set((channelData["users"] as! Array<String>).map { $0 })
-                    if( users_in_channel_set.isSubset(of: curr_users_in_channel_set)){
-                        self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id: rest.key, name:channelData["name"] as! String))
-                        return
-                    }
-                    
-                }
-                let newChannelRef = self.channelRef.childByAutoId()
-                let channelItem = [
-                    "name": self.senderDisplayName! + " Chat",
-                    "users": users_in_channel
-                    ] as [String : Any]
-                newChannelRef.setValue(channelItem)
-                self.performSegue(withIdentifier: "ShowChannelChat", sender: Channel(id:newChannelRef.key, name: channelItem["name"] as! String))
-                return
-            })
+            self.performSegue(withIdentifier: "showProfile", sender: Database.database().reference().child("dbz_users").child(curr_user.userId))
             
         }
     }
@@ -202,9 +178,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         
         if let databaseUserList = sender as? DatabaseReference {
-            let userListVc = segue.destination as! UserListViewController
-            
-            userListVc.ref = databaseUserList
+            if(type(of: segue.destination) == UserListViewController.self){
+                let userListVc = segue.destination as! UserListViewController
+                userListVc.ref = databaseUserList
+            }
+
+        }
+        
+        if let databaseUserProfile = sender as? DatabaseReference {
+            if(type(of: segue.destination) == ProfileViewController.self){
+                let userProfileVc = segue.destination as! ProfileViewController
+                userProfileVc.profileUsersRef = databaseUserProfile
+            }
         }
     }
 

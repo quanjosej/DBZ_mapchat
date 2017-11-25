@@ -67,7 +67,7 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="logout:" destination="kBB-em-wPM" id="kfb-Ew-181"/>
-                                <segue destination="xQw-nW-6u2" kind="show" id="aqZ-e9-3rt"/>
+                                <segue destination="xQw-nW-6u2" kind="show" identifier="showProfile" id="aqZ-e9-3rt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -246,19 +246,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJu-Wy-OFI">
-                                <rect key="frame" x="104" y="70" width="167.5" height="42"/>
+                                <rect key="frame" x="104" y="114" width="167.5" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status state" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krU-IC-VsX">
-                                <rect key="frame" x="146.5" y="122" width="82.5" height="18"/>
+                                <rect key="frame" x="146.5" y="166" width="82.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fF-dz-VQk">
-                                <rect key="frame" x="10" y="381" width="355" height="40"/>
+                                <rect key="frame" x="10" y="425" width="355" height="40"/>
                                 <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="OM1-ya-5gJ"/>
@@ -430,6 +430,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="i7U-5X-6yh"/>
+        <segue reference="aqZ-e9-3rt"/>
     </inferredMetricsTieBreakers>
 </document>
