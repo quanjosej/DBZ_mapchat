@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aqx-Fd-cyx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2LW-j4-Yw9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -335,6 +335,108 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fl0-rH-Nj5" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-946" y="1525"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="z7d-SP-KTV">
+            <objects>
+                <viewController id="2LW-j4-Yw9" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lL8-5g-EFT"/>
+                        <viewControllerLayoutGuide type="bottom" id="aFn-er-6F6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CAk-KD-ddu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Uu-kn-Iks">
+                                <rect key="frame" x="70" y="179" width="235" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Kdr-z2-hRP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="29h-l9-eA4">
+                                <rect key="frame" x="70" y="217" width="235" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="icG-eq-2ec"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lup-hX-omN">
+                                <rect key="frame" x="70" y="321" width="235" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="cf8-Y2-gzv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
+                                <state key="normal" title="Sign up">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                        <color key="value" red="0.85957932469999998" green="0.40118402240000001" blue="0.29446059470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-YV-qBW">
+                                <rect key="frame" x="70" y="267" width="235" height="38"/>
+                                <color key="backgroundColor" white="0.27579752604166669" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="cfY-49-Esz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="DBZ RADAR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fen-Zc-Ftl">
+                                <rect key="frame" x="94" y="135" width="187" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="0WB-yo-LdK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="40"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.053656684029999999" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Lup-hX-omN" secondAttribute="trailing" constant="54" id="0bg-n8-JW4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8Uu-kn-Iks" secondAttribute="trailing" constant="54" id="7Qo-Np-e17"/>
+                            <constraint firstItem="fen-Zc-Ftl" firstAttribute="top" secondItem="lL8-5g-EFT" secondAttribute="bottom" constant="50" id="Grp-7x-6O6"/>
+                            <constraint firstItem="vgb-YV-qBW" firstAttribute="top" secondItem="29h-l9-eA4" secondAttribute="bottom" constant="20" id="Kiq-xo-0Ir"/>
+                            <constraint firstItem="Lup-hX-omN" firstAttribute="leading" secondItem="CAk-KD-ddu" secondAttribute="leadingMargin" constant="54" id="Rry-NE-bhK"/>
+                            <constraint firstItem="Lup-hX-omN" firstAttribute="top" secondItem="vgb-YV-qBW" secondAttribute="bottom" constant="16" id="a8u-vq-R4n"/>
+                            <constraint firstItem="29h-l9-eA4" firstAttribute="leading" secondItem="CAk-KD-ddu" secondAttribute="leadingMargin" constant="54" id="avS-1V-IOi"/>
+                            <constraint firstItem="8Uu-kn-Iks" firstAttribute="top" secondItem="fen-Zc-Ftl" secondAttribute="bottom" constant="50" id="bJQ-Eg-c7w"/>
+                            <constraint firstItem="8Uu-kn-Iks" firstAttribute="leading" secondItem="CAk-KD-ddu" secondAttribute="leadingMargin" constant="54" id="dwN-kU-Wbi"/>
+                            <constraint firstItem="29h-l9-eA4" firstAttribute="top" secondItem="8Uu-kn-Iks" secondAttribute="bottom" constant="8" id="fBG-J8-Zdj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vgb-YV-qBW" secondAttribute="trailing" constant="54" id="fHL-w3-KAK"/>
+                            <constraint firstAttribute="centerX" secondItem="fen-Zc-Ftl" secondAttribute="centerX" id="hg3-X2-h07"/>
+                            <constraint firstItem="fen-Zc-Ftl" firstAttribute="centerX" secondItem="FTh-Ev-r53" secondAttribute="centerX" id="tGr-tS-Qpm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="29h-l9-eA4" secondAttribute="trailing" constant="54" id="wfy-XD-ei6"/>
+                            <constraint firstItem="vgb-YV-qBW" firstAttribute="leading" secondItem="CAk-KD-ddu" secondAttribute="leadingMargin" constant="54" id="yOI-uw-D7g"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FTh-Ev-r53"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jll-Qs-w1N" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-74" y="1524"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

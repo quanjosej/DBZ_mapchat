@@ -26,12 +26,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DBZ RADAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="c9R-JZ-LPW">
-                                <rect key="frame" x="92.5" y="304.5" width="190.5" height="58"/>
+                                <rect key="frame" x="72" y="304.5" width="231" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="351" id="tsL-N0-RdF"/>
                                     <constraint firstAttribute="height" constant="58" id="xjl-pU-gKL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="33"/>
+                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="40"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
