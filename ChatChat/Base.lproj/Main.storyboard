@@ -32,7 +32,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTP-1r-Xjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1529" y="870"/>
+            <point key="canvasLocation" x="-1058" y="1780"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="bSs-3n-jeA">
@@ -321,12 +321,12 @@
                         <outlet property="logoutButton" destination="XKy-yk-6oh" id="Aer-0o-9RL"/>
                         <outlet property="statusLabel" destination="krU-IC-VsX" id="Uig-Iy-r9D"/>
                         <outlet property="userNameLabel" destination="jJu-Wy-OFI" id="mbC-zs-87b"/>
-                        <segue destination="uZz-1v-gg0" kind="show" identifier="showUserList" id="iLZ-Na-B8k"/>
+                        <segue destination="Agl-KK-flJ" kind="show" identifier="showUserList" id="SmH-tv-4Cz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSj-zv-8ik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-244" y="1780"/>
+            <point key="canvasLocation" x="-138" y="1771"/>
         </scene>
         <!--User List-->
         <scene sceneID="KBp-bk-8IS">
@@ -371,10 +371,52 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2X-ce-iNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="626" y="1780"/>
+            <point key="canvasLocation" x="1340" y="870"/>
+        </scene>
+        <!--User List-->
+        <scene sceneID="Lic-j3-dMY">
+            <objects>
+                <tableViewController title="User List" id="Agl-KK-flJ" customClass="FriendListViewController" customModule="ChatChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="HxI-UK-K6b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="TaC-zf-0E6" detailTextLabel="1yc-iR-gv0" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="cAl-jE-nAa">
+                                <rect key="frame" x="0.0" y="22" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cAl-jE-nAa" id="mSP-mc-3tU">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TaC-zf-0E6">
+                                            <rect key="frame" x="16" y="7" width="35" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1yc-iR-gv0">
+                                            <rect key="frame" x="16" y="34" width="41.5" height="16.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Agl-KK-flJ" id="i8w-zV-fVK"/>
+                            <outlet property="delegate" destination="Agl-KK-flJ" id="Guw-gW-LKs"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Friends List" id="JuN-Ku-g7e"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6w2-IS-wxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="742" y="1771"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="J7d-BC-wZV"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -21,6 +21,7 @@
 		BB53558F1BEF7E9700321277 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB53558E1BEF7E9700321277 /* ChatViewController.swift */; };
 		D33D7B281FC99BFF00CBFBF1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D7B271FC99BFF00CBFBF1 /* ProfileViewController.swift */; };
 		D33D7B2A1FC9AE4000CBFBF1 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D7B291FC9AE4000CBFBF1 /* UserListViewController.swift */; };
+		D33D7B2C1FC9EFD900CBFBF1 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D7B2B1FC9EFD900CBFBF1 /* FriendListViewController.swift */; };
 		D366DFDC1FC159D300CAF112 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366DFDB1FC159D300CAF112 /* MapViewController.swift */; };
 		D389FC381FC1887700EB8FC7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389FC371FC1887700EB8FC7 /* User.swift */; };
 		D389FC3B1FC1ABB100EB8FC7 /* UserMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D389FC3A1FC1ABB100EB8FC7 /* UserMarkerView.swift */; };
@@ -46,6 +47,7 @@
 		BB53558E1BEF7E9700321277 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D33D7B271FC99BFF00CBFBF1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D33D7B291FC9AE4000CBFBF1 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		D33D7B2B1FC9EFD900CBFBF1 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		D366DFDB1FC159D300CAF112 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = Assets.xcassets/MapViewController.swift; sourceTree = "<group>"; };
 		D389FC371FC1887700EB8FC7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D389FC391FC19A7F00EB8FC7 /* ChatChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatChat.entitlements; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				BB53558E1BEF7E9700321277 /* ChatViewController.swift */,
 				D366DFDB1FC159D300CAF112 /* MapViewController.swift */,
 				D33D7B291FC9AE4000CBFBF1 /* UserListViewController.swift */,
+				D33D7B2B1FC9EFD900CBFBF1 /* FriendListViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				BB53557A1BEF765800321277 /* AppDelegate.swift in Sources */,
 				D33D7B281FC99BFF00CBFBF1 /* ProfileViewController.swift in Sources */,
 				45A0D8FE1D49508800F26729 /* CreateChannelCell.swift in Sources */,
+				D33D7B2C1FC9EFD900CBFBF1 /* FriendListViewController.swift in Sources */,
 				D389FC381FC1887700EB8FC7 /* User.swift in Sources */,
 				D366DFDC1FC159D300CAF112 /* MapViewController.swift in Sources */,
 				D389FC3B1FC1ABB100EB8FC7 /* UserMarkerView.swift in Sources */,

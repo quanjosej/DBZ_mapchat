@@ -58,7 +58,7 @@ class ProfileViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
         
         if let databaseUserList = sender as? DatabaseReference {
-            let userListVc = segue.destination as! UserListViewController
+            let userListVc = segue.destination as! FriendListViewController
             
             userListVc.ref = databaseUserList
         }
