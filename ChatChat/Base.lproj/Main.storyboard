@@ -264,82 +264,9 @@
             <point key="canvasLocation" x="913" y="63"/>
         </scene>
         <!--Login View Controller-->
-        <scene sceneID="54e-Nv-ZQf">
-            <objects>
-                <viewController id="aqx-Fd-cyx" customClass="LoginViewController" customModule="ChatChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="agE-Cm-c6Q">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DBZ RADAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="WAM-ee-kux">
-                                <rect key="frame" x="0.0" y="245" width="375" height="58"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="Bx9-N8-ytL"/>
-                                    <constraint firstAttribute="width" constant="351" id="pBX-8S-P0r"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="33"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="pBX-8S-P0r"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIx-iG-Oa2">
-                                <rect key="frame" x="78" y="569" width="219" height="50"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="219" id="c4U-Nu-cci"/>
-                                    <constraint firstAttribute="height" constant="50" id="dCj-Fj-cva"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="17"/>
-                                <state key="normal" title="Login anonymously">
-                                    <color key="titleColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="loginDidTouch:" destination="aqx-Fd-cyx" eventType="touchUpInside" id="aO2-0A-zOn"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Hr-NN-xev">
-                                <rect key="frame" x="78" y="503" width="219" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="0.053656684027777776" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="3Hr-NN-xev" firstAttribute="centerX" secondItem="iIx-iG-Oa2" secondAttribute="centerX" id="24G-Q4-EnM"/>
-                            <constraint firstItem="iIx-iG-Oa2" firstAttribute="centerX" secondItem="WAM-ee-kux" secondAttribute="centerX" id="2Xz-zs-7Et"/>
-                            <constraint firstItem="3Hr-NN-xev" firstAttribute="height" secondItem="iIx-iG-Oa2" secondAttribute="height" id="PjC-de-YPL"/>
-                            <constraint firstItem="WAM-ee-kux" firstAttribute="width" secondItem="agE-Cm-c6Q" secondAttribute="width" id="RWw-7X-31H"/>
-                            <constraint firstItem="WAM-ee-kux" firstAttribute="centerX" secondItem="Wet-f2-d3Q" secondAttribute="centerX" id="TmW-HN-P6p"/>
-                            <constraint firstItem="iIx-iG-Oa2" firstAttribute="top" secondItem="3Hr-NN-xev" secondAttribute="bottom" constant="16" id="bJ5-wb-JMC"/>
-                            <constraint firstItem="WAM-ee-kux" firstAttribute="top" secondItem="Wet-f2-d3Q" secondAttribute="top" constant="225" id="jkG-C3-UhO"/>
-                            <constraint firstItem="3Hr-NN-xev" firstAttribute="width" secondItem="iIx-iG-Oa2" secondAttribute="width" id="nbK-vh-1zN"/>
-                            <constraint firstItem="Wet-f2-d3Q" firstAttribute="bottom" secondItem="iIx-iG-Oa2" secondAttribute="bottom" constant="48" id="vL0-cH-7gi"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Wet-f2-d3Q"/>
-                    </view>
-                    <connections>
-                        <outlet property="bottomLayoutGuideConstraint" destination="WAM-ee-kux" id="00W-oc-keg"/>
-                        <outlet property="nameField" destination="3Hr-NN-xev" id="XbT-Tu-2OP"/>
-                        <outlet property="titleLabel" destination="WAM-ee-kux" id="QEB-7T-xa5"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fl0-rH-Nj5" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-946" y="1525"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="z7d-SP-KTV">
             <objects>
-                <viewController id="2LW-j4-Yw9" sceneMemberID="viewController">
+                <viewController id="2LW-j4-Yw9" customClass="LoginViewController" customModule="ChatChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lL8-5g-EFT"/>
                         <viewControllerLayoutGuide type="bottom" id="aFn-er-6F6"/>
@@ -385,6 +312,9 @@
                                         <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signUpDidTouch:" destination="2LW-j4-Yw9" eventType="touchUpInside" id="onO-yA-71H"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-YV-qBW">
                                 <rect key="frame" x="70" y="267" width="235" height="38"/>
@@ -402,9 +332,12 @@
                                         <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginDidTouch:" destination="2LW-j4-Yw9" eventType="touchUpInside" id="whP-8E-hqv"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="DBZ RADAR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fen-Zc-Ftl">
-                                <rect key="frame" x="94" y="135" width="187" height="59"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DBZ RADAR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fen-Zc-Ftl">
+                                <rect key="frame" x="72" y="70" width="231" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="0WB-yo-LdK"/>
                                 </constraints>
@@ -433,13 +366,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FTh-Ev-r53"/>
                     </view>
+                    <connections>
+                        <outlet property="textFieldLoginEmail" destination="8Uu-kn-Iks" id="piK-3A-0Ya"/>
+                        <outlet property="textFieldLoginPassword" destination="29h-l9-eA4" id="Oux-KQ-q7O"/>
+                        <segue destination="k1L-YN-3rW" kind="presentation" identifier="LoginToMap" id="JBc-dY-3gr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jll-Qs-w1N" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-74" y="1524"/>
+            <point key="canvasLocation" x="-1335" y="1599"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="JBc-dY-3gr"/>
         <segue reference="x2V-VP-Dle"/>
     </inferredMetricsTieBreakers>
 </document>
