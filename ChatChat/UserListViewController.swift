@@ -6,6 +6,8 @@ class UserListViewController: UITableViewController {
     // MARK: Properties
     var items: [User] = []
     var ref : DatabaseReference? // = Database.database().reference().child("dbz_users")
+    let meRef : DatabaseReference = Database.database().reference().child("dbz_users").child((Auth.auth().currentUser?.uid)!)
+
     
     // MARK: UIViewController Lifecycle
     
@@ -20,6 +22,9 @@ class UserListViewController: UITableViewController {
             var newItems: [User] = []
             
             for item in snapshot.children {
+                if(self.meRef.key == (item as AnyObject).key){
+                    continue
+                }
                 let userItem = User(snapshot: item as! DataSnapshot)
                 newItems.append(userItem)
             }

@@ -59,6 +59,9 @@
                     <navigationItem key="navigationItem" id="s2Y-Dg-405">
                         <barButtonItem key="leftBarButtonItem" title="Users" id="48q-dv-gzh">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="showUserList:" destination="kBB-em-wPM" id="w76-Fi-Gxe"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="Cs2-x7-kg9" userLabel="Profile">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,6 +74,7 @@
                     <connections>
                         <outlet property="mapView" destination="PoP-0y-Cic" id="Kps-uA-p8k"/>
                         <outlet property="statusLabel" destination="s2Y-Dg-405" id="Riv-78-Ak8"/>
+                        <segue destination="uZz-1v-gg0" kind="show" identifier="showUserListSegue" id="J7d-BC-wZV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VN-ts-33b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -322,7 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSj-zv-8ik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="393" y="1780"/>
+            <point key="canvasLocation" x="-244" y="1780"/>
         </scene>
         <!--User List-->
         <scene sceneID="KBp-bk-8IS">
@@ -367,7 +371,10 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2X-ce-iNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1417" y="1780"/>
+            <point key="canvasLocation" x="626" y="1780"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="J7d-BC-wZV"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -186,6 +186,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
+    @IBAction func showUserList(_ sender: Any) {
+        self.performSegue(withIdentifier: "showUserListSegue", sender: Database.database().reference().child("dbz_users"))
+    }
+    
+    
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -196,6 +201,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             chatVc.senderDisplayName = senderDisplayName
             chatVc.channel = channel
             chatVc.channelRef = channelRef.child(channel.id)
+        }
+        
+        if let databaseUserList = sender as? DatabaseReference {
+            let userListVc = segue.destination as! UserListViewController
+            
+            userListVc.ref = databaseUserList
         }
     }
 
