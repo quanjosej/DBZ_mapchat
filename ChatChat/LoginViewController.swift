@@ -6,8 +6,20 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var nameField: UITextField!
   @IBOutlet weak var bottomLayoutGuideConstraint: NSLayoutConstraint!
   
-  override func viewWillAppear(_ animated: Bool) {
+  @IBOutlet weak var titleLabel: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    
+    
+    
+    UIView.animate(withDuration: 0.9, delay: 0.5,
+                   animations: {
+                        self.titleLabel.center.y -= 100
+                    },
+                   completion: nil
+    )
+    
     NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
   }
